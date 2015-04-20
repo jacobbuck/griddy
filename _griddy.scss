@@ -1,0 +1,51 @@
+// Griddy - Grid Framework
+// =======================
+
+// Settings
+// --------
+
+$griddy-gutter   : 1em !default;
+$griddy-direction: left;
+
+// Functions
+// ---------
+
+@function griddy-size ( $size ) {
+	@if length( $size ) == 3 and nth( $size, 2 ) == "of" {
+		@return ( nth( $size, 1 ) / nth( $size, 3 ) ) * 100%;
+	}
+	@return $size;
+}
+
+// Mixins
+// ------
+
+@mixin griddy-row ( $gutter: $griddy-gutter ) {
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+	@if $gutter > 0 {
+		margin-left: $gutter * -1;
+	}
+}
+
+@mixin griddy-column ( $size, $gutter: $griddy-gutter ) {
+	@if $gutter > 0 {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding-left: $gutter;
+	}
+	float: $griddy-direction;
+	width: griddy-size( $size );
+}
+
+@mixin griddy-offset ( $size ) {
+	margin-left: griddy-size( $size );
+}
+
+@mixin griddy-clear {
+	clear: $griddy-direction;
+}
