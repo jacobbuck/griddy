@@ -1,51 +1,71 @@
-// Griddy - Grid Framework
-// =======================
+/*!
+ * Griddy - Grid Framework
+ * https://github.com/jacobbuck/griddy
+ * Copyright (c) 2015 Jacob Buck
+ * Licensed under the terms of the MIT license.
+ */
 
-// Settings
-// --------
+// Default grid gutter width
+$griddy-gutter: 1em !default;
 
-$griddy-gutter   : 1em !default;
-$griddy-direction: left;
+// Default grid direction
+$griddy-direction: left !default;
 
-// Functions
-// ---------
-
-@function griddy-size ( $size ) {
-	@if length( $size ) == 3 and nth( $size, 2 ) == "of" {
-		@return ( nth( $size, 1 ) / nth( $size, 3 ) ) * 100%;
+// Helper function to parse size argument into a percentage size
+// @param mixed $size Expected formats: `25%` or `1 of 4`
+// @return number $size
+@function griddy-size ($size) {
+	@if length($size) == 3 and nth($size, 2) == "of" {
+		@return (nth($size, 1) / nth($size, 3)) * 100%;
 	}
-	@return $size;
+	$if unit($size) == "%" {
+		@return $size;
+	}
+	@error "$size must be either a list or number in % unit, was #{$size}.";
 }
 
-// Mixins
-// ------
-
-@mixin griddy-row ( $gutter: $griddy-gutter ) {
-	&:after {
-		content: '';
-		display: table;
-		clear: both;
+// Output styles for a grid row
+// @param number $gutter optional override width of grid gutter
+@mixin griddy-row ($gutter: $griddy-gutter) {
+	@if mixin-exists(clearfix) {
+		@include clearfix();
+	} @else {
+		&:after {
+			content: '';
+			display: table;
+			clear: both;
+		}
 	}
 	@if $gutter > 0 {
-		margin-left: $gutter * -1;
+		margin-#{$griddy-direction}: $gutter * -1;
 	}
 }
 
-@mixin griddy-column ( $size, $gutter: $griddy-gutter ) {
+// Output styles for a grid column
+// @param mixed $width width of column (@see griddy-size)
+// @param number $gutter optional override width of grid gutter
+@mixin griddy-column ($width, $gutter: $griddy-gutter) {
 	@if $gutter > 0 {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
+		@if mixin-exists(box-sizing) {
+			@include box-sizing(border-box);
+		} @else {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
 		padding-left: $gutter;
 	}
 	float: $griddy-direction;
-	width: griddy-size( $size );
+	width: griddy-size($width);
 }
 
-@mixin griddy-offset ( $size ) {
-	margin-left: griddy-size( $size );
+// Output offset style for a grid column
+// @param mixed $offset offset of column (@see griddy-size)
+@mixin griddy-offset ($offset) {
+	margin-#{$griddy-direction}: griddy-size($offset);
 }
 
+// Output clear style for a grid column
 @mixin griddy-clear {
 	clear: $griddy-direction;
 }
