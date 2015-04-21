@@ -18,7 +18,7 @@ $griddy-direction: left !default;
 	@if length($size) == 3 and nth($size, 2) == "of" {
 		@return (nth($size, 1) / nth($size, 3)) * 100%;
 	}
-	$if unit($size) == "%" {
+	@if unit($size) == "%" {
 		@return $size;
 	}
 	@error "$size must be either a list or number in % unit, was #{$size}.";
@@ -31,7 +31,7 @@ $griddy-direction: left !default;
 		@include clearfix();
 	} @else {
 		&:after {
-			content: '';
+			content: "";
 			display: table;
 			clear: both;
 		}
