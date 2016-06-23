@@ -51,7 +51,7 @@ $griddy-direction: left !default;
 		} @else {
 			box-sizing: border-box;
 		}
-		padding-left: $gutter;
+		padding-#{$griddy-direction}: $gutter;
 	}
 	float: $griddy-direction;
 	width: griddy-size($width);
