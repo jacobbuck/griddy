@@ -28,7 +28,7 @@ $griddy-direction: left !default;
 // @param number $gutter optional override width of grid gutter
 @mixin griddy-row ($gutter: $griddy-gutter) {
 	@if mixin-exists(clearfix) {
-		@include clearfix();
+		@include clearfix;
 	} @else {
 		&:after {
 			content: "";
@@ -49,8 +49,6 @@ $griddy-direction: left !default;
 		@if mixin-exists(box-sizing) {
 			@include box-sizing(border-box);
 		} @else {
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
 			box-sizing: border-box;
 		}
 		padding-left: $gutter;
