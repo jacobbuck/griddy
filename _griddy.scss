@@ -1,7 +1,7 @@
 /*!
  * Griddy - Simple grid framework fror Sass
  * https://github.com/jacobbuck/griddy
- * Copyright (c) 2015 Jacob Buck
+ * Copyright (c) 2016 Jacob Buck
  * Licensed under the terms of the MIT license.
  */
 
@@ -27,14 +27,10 @@ $griddy-direction: left !default;
 // Output styles for a grid row
 // @param number $gutter optional override width of grid gutter
 @mixin griddy-row ($gutter: $griddy-gutter) {
-	@if mixin-exists(clearfix) {
-		@include clearfix;
-	} @else {
-		&:after {
-			content: "";
-			display: table;
-			clear: both;
-		}
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
 	}
 	@if $gutter > 0 {
 		margin-#{$griddy-direction}: $gutter * -1;
@@ -46,11 +42,7 @@ $griddy-direction: left !default;
 // @param number $gutter optional override width of grid gutter
 @mixin griddy-column ($width, $gutter: $griddy-gutter) {
 	@if $gutter > 0 {
-		@if mixin-exists(box-sizing) {
-			@include box-sizing(border-box);
-		} @else {
-			box-sizing: border-box;
-		}
+		box-sizing: border-box;
 		padding-#{$griddy-direction}: $gutter;
 	}
 	float: $griddy-direction;
