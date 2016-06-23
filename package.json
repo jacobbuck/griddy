@@ -1,6 +1,6 @@
 {
   "name": "griddy",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Simple grid framework for Sass",
   "main": "_griddy.scss",
   "scripts": {
