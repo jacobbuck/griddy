@@ -1,6 +1,6 @@
 Griddy
 ======
 
-Simple grid framework fror Sass.
+Simple grid framework for Sass.
 
 Documentation in progress.

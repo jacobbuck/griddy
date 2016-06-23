@@ -1,11 +1,11 @@
 {
   "name": "griddy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/jacobbuck/griddy",
   "authors": [
     "Jacob Buck <buck.jacob@gmail.com>"
   ],
-  "description": "Simple grid framework fror Sass",
+  "description": "Simple grid framework for Sass",
   "main": "_griddy.scss",
   "keywords": [
     "sass",
