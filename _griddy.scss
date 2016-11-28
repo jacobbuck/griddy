@@ -5,11 +5,11 @@
  * Licensed under the terms of the MIT license.
  */
 
-// Default grid gutter width
-$griddy-gutter: 1em !default;
-
 // Default grid direction
 $griddy-direction: left !default;
+
+// Default grid gutter width
+$griddy-gutter: 0 !default;
 
 // Helper function to parse size argument into a percentage size
 // @param mixed $size Expected formats: `25%` or `1 of 4`
@@ -25,37 +25,62 @@ $griddy-direction: left !default;
 }
 
 // Output styles for a grid row
-// @param number $gutter optional override width of grid gutter
-@mixin griddy-row ($gutter: $griddy-gutter) {
+// @param number $direction optional override width of grid direction
+// @param number $gutter optional override width of grid gutter width
+@mixin griddy-row (
+	$direction: $griddy-direction,
+	$gutter: $griddy-gutter
+) {
 	&::after {
 		content: "";
 		display: table;
 		clear: both;
 	}
 	@if $gutter > 0 {
-		margin-#{$griddy-direction}: $gutter * -1;
+		margin-#{$direction}: $gutter * -1;
 	}
 }
 
 // Output styles for a grid column
 // @param mixed $width width of column (@see griddy-size)
-// @param number $gutter optional override width of grid gutter
-@mixin griddy-column ($width, $gutter: $griddy-gutter) {
+// @param number $direction optional override width of grid direction
+// @param number $gutter optional override width of grid gutter width
+@mixin griddy-column (
+	$width,
+	$direction: $griddy-direction,
+	$gutter: $griddy-gutter
+) {
+	box-sizing: border-box;
+	float: $direction;
+
+	$width: griddy-size($width);
 	@if $gutter > 0 {
-		box-sizing: border-box;
-		padding-#{$griddy-direction}: $gutter;
+		width: calc(#{$width} - #{$gutter});
+		margin-#{$direction}: $gutter;
+	} @else {
+		width: $width;
 	}
-	float: $griddy-direction;
-	width: griddy-size($width);
 }
 
 // Output offset style for a grid column
 // @param mixed $offset offset of column (@see griddy-size)
-@mixin griddy-offset ($offset) {
-	margin-#{$griddy-direction}: griddy-size($offset);
+// @param number $direction optional override width of grid direction
+// @param number $gutter optional override width of grid gutter width
+@mixin griddy-offset (
+	$offset,
+	$direction: $griddy-direction,
+	$gutter: $griddy-gutter
+) {
+	$offset: griddy-size($offset);
+	@if $gutter > 0 {
+		margin-#{$direction}: calc(#{$offset} + #{$gutter});
+	} @else {
+		margin-#{$direction}: $offset;
+	}
 }
 
 // Output clear style for a grid column
-@mixin griddy-clear {
-	clear: $griddy-direction;
+// @param number $direction optional override width of grid direction
+@mixin griddy-clear ($direction: $griddy-direction) {
+	clear: $direction;
 }

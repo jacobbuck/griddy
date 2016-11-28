@@ -43,11 +43,16 @@ You can also define gutters for your grid layout:
 
 ```
 .some-row {
-	@include griddy-row(20px);
+	@include griddy-row($gutter: 20px);
 }
 
 .some-column {
-	@include griddy-column(1 of 2, 20px);
+	@include griddy-column(1 of 2, $gutter: 20px);
+}
+
+.some-offset-column {
+	@include griddy-column(1 of 4, $gutter: 20px);
+	@include griddy-offset(1 of 4, $gutter: 20px);
 }
 ```
 
@@ -65,11 +70,11 @@ $griddy-gutter: 20px;
 }
 
 .special-row {
-	@include griddy-row(40px);
+	@include griddy-row($gutter: 40px);
 }
 
 .special-column {
-	@include griddy-column(1 of 2, 40px);
+	@include griddy-column(1 of 2, $gutter: 40px);
 }
 ```
 
