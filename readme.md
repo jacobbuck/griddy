@@ -14,7 +14,7 @@ To define a row element of your layout:
 
 ```scss
 .some-row {
-	@include griddy-row;
+  @include griddy-row;
 }
 ```
 
@@ -22,7 +22,7 @@ And to define a column element:
 
 ```scss
 .some-column {
-	@include griddy-column(1 of 2);
+  @include griddy-column(1 of 2);
 }
 ```
 
@@ -30,8 +30,8 @@ Columns can also be offset:
 
 ```scss
 .some-column {
-	@include griddy-column(1 of 2);
-	@include griddy-offset(1 of 4);
+  @include griddy-column(1 of 2);
+  @include griddy-offset(1 of 4);
 }
 ```
 
@@ -41,16 +41,16 @@ You can also define gutters for your grid layout:
 
 ```scss
 .some-row {
-	@include griddy-row($gutter: 20px);
+  @include griddy-row($gutter: 20px);
 }
 
 .some-column {
-	@include griddy-column(1 of 2, $gutter: 20px);
+  @include griddy-column(1 of 2, $gutter: 20px);
 }
 
 .some-offset-column {
-	@include griddy-column(1 of 4, $gutter: 20px);
-	@include griddy-offset(1 of 4, $gutter: 20px);
+  @include griddy-column(1 of 4, $gutter: 20px);
+  @include griddy-offset(1 of 4, $gutter: 20px);
 }
 ```
 
@@ -60,19 +60,19 @@ Or globally define your gutter width:
 $griddy-gutter: 20px;
 
 .generic-row {
-	@include griddy-row;
+  @include griddy-row;
 }
 
 .generic-column {
-	@include griddy-column(1 of 2);
+  @include griddy-column(1 of 2);
 }
 
 .special-row {
-	@include griddy-row($gutter: 40px);
+  @include griddy-row($gutter: 40px);
 }
 
 .special-column {
-	@include griddy-column(1 of 2, $gutter: 40px);
+  @include griddy-column(1 of 2, $gutter: 40px);
 }
 ```
 
@@ -86,7 +86,7 @@ If you need to clear the preceding column in your layout:
 
 ```scss
 .some-column:nth-child(3n+1) {
-	@include griddy-clear;
+  @include griddy-clear;
 }
 ```
 
