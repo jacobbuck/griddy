@@ -6,13 +6,13 @@ Simple grid framework for Sass.
 
 First off you'll need to import griddy to use it:
 
-```
+```scss
 @import 'path/to/griddy';
 ```
 
 To define a row element of your layout:
 
-```
+```scss
 .some-row {
 	@include griddy-row;
 }
@@ -20,7 +20,7 @@ To define a row element of your layout:
 
 And to define a column element:
 
-```
+```scss
 .some-column {
 	@include griddy-column(1 of 2);
 }
@@ -28,7 +28,7 @@ And to define a column element:
 
 Columns can also be offset:
 
-```
+```scss
 .some-column {
 	@include griddy-column(1 of 2);
 	@include griddy-offset(1 of 4);
@@ -39,7 +39,7 @@ The width parameter in `griddy-column` and `griddy-offset` can be a percentage (
 
 You can also define gutters for your grid layout:
 
-```
+```scss
 .some-row {
 	@include griddy-row($gutter: 20px);
 }
@@ -56,7 +56,7 @@ You can also define gutters for your grid layout:
 
 Or globally define your gutter width:
 
-```
+```scss
 $griddy-gutter: 20px;
 
 .generic-row {
@@ -78,13 +78,13 @@ $griddy-gutter: 20px;
 
 Or have no gutter:
 
-```
+```scss
 $griddy-gutter: 0;
 ```
 
 If you need to clear the preceding column in your layout:
 
-```
+```scss
 .some-column:nth-child(3n+1) {
 	@include griddy-clear;
 }
@@ -92,7 +92,7 @@ If you need to clear the preceding column in your layout:
 
 By default griddy's direction is left-to-right, however you can change this by setting:
 
-```
+```scss
 $griddy-direction: right;
 ```
 
