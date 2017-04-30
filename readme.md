@@ -1,10 +1,8 @@
-Griddy
-======
+# griddy
 
 Simple grid framework for Sass.
 
-Getting Started
----------------
+## Getting Started
 
 First off you'll need to import griddy to use it:
 
@@ -98,12 +96,12 @@ By default griddy's direction is left-to-right, however you can change this by s
 $griddy-direction: right;
 ```
 
-Browser Support
----------------
+## Browser Support
 
-Works on all modern browsers. If you need support for older browsers, you might want to check out version `1.0.2`.
+Works on all modern browsers which support `box-sizing` and `calc()`.
 
-License
--------
+If you need support Internet Explorer 8, you might want to check out version [1.0.2](https://github.com/jacobbuck/griddy/tree/1.0.2).
 
-MIT - see [LICENSE](LICENSE)
+## License
+
+MIT - see [license](license)
