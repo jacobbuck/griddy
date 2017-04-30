@@ -11,11 +11,13 @@
     "url": "git+https://github.com/jacobbuck/griddy.git"
   },
   "keywords": [
-    "sass",
-    "scss",
+    "column",
+    "columns",
     "grid",
     "layout",
-    "columns"
+    "row",
+    "sass",
+    "scss"
   ],
   "author": "Jacob Buck <buck.jacob@gmail.com>",
   "license": "MIT",
