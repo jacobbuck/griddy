@@ -35,7 +35,15 @@ Columns can also be offset:
 }
 ```
 
-The width parameter in `griddy-column` and `griddy-offset` can be a percentage (i.e. `25%`) or a human readable fraction (i.e. `1 of 4`).
+The width parameter in `griddy-column` and `griddy-offset` can be a percentage (i.e. `25%`), a human readable fraction (i.e. `1 of 4`) or unitless number (i.e. `0.25`):
+
+```scss
+.some-column {
+  @include griddy-column(1 of 4);
+  @include griddy-column(25%);
+  @include griddy-column(1/4);
+}
+```
 
 You can also define gutters for your grid layout:
 
