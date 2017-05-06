@@ -12,7 +12,7 @@ $griddy-direction: left !default;
 $griddy-gutter: 0 !default;
 
 // Helper function to parse size argument into a percentage size
-// @param mixed $size Expected formats: `25%` or `1 of 4`
+// @param mixed $size Expected formats: `1 of 4`, `25%` or '0.25'
 // @return number $size
 @function griddy-size ($size) {
   @if length($size) == 3 and nth($size, 2) == "of" {
@@ -21,7 +21,10 @@ $griddy-gutter: 0 !default;
   @if unit($size) == "%" {
     @return $size;
   }
-  @error "$size must be either a list or number in % unit, was #{$size}.";
+  @if unitless($size) {
+    @return $size * 100%;
+  }
+  @error "$size must be either a list, percent or unitless number, was #{$size}.";
 }
 
 // Output styles for a grid row
